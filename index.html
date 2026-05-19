@@ -466,24 +466,68 @@
 
     /* ===== ACTUS ===== */
     #actus { background: #0c0c0c; padding: 100px 0; }
-    .actus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 24px; margin-top: 48px; }
+    .actus-layout {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 28px; align-items: start; margin-top: 56px;
+    }
+    .actus-featured {
+      position: relative; border-radius: 18px; overflow: hidden;
+      min-height: 420px; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .actus-featured-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .actus-featured:hover .actus-featured-img { transform: scale(1.04); }
+    .actus-featured-overlay {
+      position: relative; z-index: 1;
+      background: linear-gradient(to top, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.55) 55%, transparent 100%);
+      padding: 32px;
+    }
+    .actus-featured-label {
+      font-size: 0.72rem; color: var(--green-light); letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 600; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .actus-featured-label::before {
+      content: ''; width: 18px; height: 2px; background: var(--green-light);
+    }
+    .actus-featured-title {
+      font-family: var(--font-heading); font-size: 1.9rem; font-weight: 800;
+      color: var(--white); text-transform: uppercase; line-height: 1.05; margin-bottom: 10px;
+    }
+    .actus-featured-sub {
+      font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6;
+    }
+    .actus-cards { display: flex; flex-direction: column; gap: 14px; }
     .actu-card {
-      background: #111; border: 1px solid rgba(255,255,255,0.06);
-      padding: 28px 28px 32px; position: relative; overflow: hidden;
+      background: #141414; border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px; padding: 22px 24px 24px;
+      position: relative; overflow: hidden;
       transition: border-color 0.3s, transform 0.3s;
     }
-    .actu-card:hover { border-color: rgba(45,106,79,0.4); transform: translateY(-3px); }
+    .actu-card:hover { border-color: rgba(45,106,79,0.4); transform: translateX(4px); }
+    .actu-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .actu-badge {
-      display: inline-block; padding: 4px 14px; font-size: 0.72rem;
-      font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 18px;
+      display: inline-block; padding: 3px 12px; font-size: 0.7rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 4px;
     }
     .badge-Fermeture { background: rgba(220,50,50,0.15); color: #ff7070; border: 1px solid rgba(220,50,50,0.3); }
-    .badge-Promotion { background: rgba(45,106,79,0.2); color: var(--yellow); border: 1px solid rgba(45,106,79,0.4); }
+    .badge-Promotion { background: rgba(45,106,79,0.2); color: var(--green-light); border: 1px solid rgba(45,106,79,0.4); }
     .badge-Info      { background: rgba(80,140,255,0.15); color: #88b4ff; border: 1px solid rgba(80,140,255,0.3); }
     .badge-Ouvert    { background: rgba(45,106,79,0.2); color: var(--green-light); border: 1px solid rgba(45,106,79,0.35); }
-    .actu-date { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-bottom: 10px; letter-spacing: 0.05em; }
-    .actu-title { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 10px; }
-    .actu-text { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .actu-date { font-size: 0.72rem; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; }
+    .actu-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 7px; line-height: 1.15; }
+    .actu-text { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+    .actus-empty {
+      text-align: center; padding: 48px 24px;
+      border: 1px dashed rgba(255,255,255,0.1); border-radius: 14px;
+      color: rgba(255,255,255,0.25); font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .actus-layout { grid-template-columns: 1fr; gap: 20px; }
+      .actus-featured { min-height: 260px; }
+    }
 
     /* ===== AVIS ===== */
     #avis { background: var(--black); padding: 100px 0; }
@@ -1105,11 +1149,28 @@
 </section>
 
 <!-- ===== ACTUALITÉS ===== -->
-<section id="actus" style="display:none;">
+<section id="actus">
   <div class="container">
     <div class="section-label">Infos garage</div>
-    <h2 class="section-title">Infos du garage</h2>
-    <div class="actus-grid" id="actusGrid"></div>
+    <h2 class="section-title">Actualités</h2>
+    <div class="actus-layout">
+
+      <!-- Photo vedette -->
+      <div class="actus-featured">
+        <img src="images/ACTU.jpg" alt="Actualités Eco Mécanique" class="actus-featured-img">
+        <div class="actus-featured-overlay">
+          <div class="actus-featured-label">Restez informés</div>
+          <div class="actus-featured-title">Infos & fermetures</div>
+          <p class="actus-featured-sub">Retrouvez ici toutes les informations importantes du garage : fermetures exceptionnelles, promotions et nouveautés.</p>
+        </div>
+      </div>
+
+      <!-- Cartes actualités -->
+      <div class="actus-cards" id="actusGrid">
+        <div class="actus-empty">Aucune actualité en ce moment — revenez bientôt.</div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -1568,31 +1629,25 @@ observe('.review-card',  'vis', 80);
   try {
     const res  = await fetch('actus.json');
     const data = await res.json();
-    const now  = new Date();
-    const cutoff = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000); // 3 months
-
-    const recent = data.filter(a => new Date(a.date) >= cutoff)
-                       .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    if (!recent.length) return;
-
-    const section = $('#actus');
-    const grid    = $('#actusGrid');
-    section.style.display = 'block';
-
-    recent.forEach(a => {
+    const sorted = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (!sorted.length) return;
+    const grid = $('#actusGrid');
+    grid.innerHTML = '';
+    sorted.forEach(a => {
       const d = new Date(a.date);
       const dateStr = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
       grid.innerHTML += `
         <div class="actu-card">
-          <span class="actu-badge badge-${a.badge}">${a.badge}</span>
-          <div class="actu-date">${dateStr}</div>
+          <div class="actu-card-top">
+            <span class="actu-badge badge-${a.badge}">${a.badge}</span>
+            <div class="actu-date">${dateStr}</div>
+          </div>
           <div class="actu-title">${a.titre}</div>
           <div class="actu-text">${a.texte}</div>
         </div>
       `;
     });
-  } catch(e) { /* actus.json inaccessible → section reste masquée */ }
+  } catch(e) { /* actus.json inaccessible — placeholder reste affiché */ }
 })();
 
 /* ─── CONTACT FORM (Formspree) ─── */

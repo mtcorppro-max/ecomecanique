@@ -621,27 +621,69 @@
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     }
     @media (max-width: 768px) {
+      /* Header */
       nav { display: none; }
       .hamburger { display: flex; }
+      .btn-call { display: none; }
+      .logo-svg-wrap { width: 52px; height: 52px; }
+      .logo-img { width: 52px; height: 52px; }
+      .logo-name { font-size: 1.1rem; }
+      .logo-sub { font-size: 0.55rem; letter-spacing: 0.12em; }
+      /* Hero */
+      .hero-layout { padding-top: 80px; padding-bottom: 40px; }
+      .hero-buttons { flex-direction: column; gap: 12px; }
+      .hero-buttons .btn { width: 100%; justify-content: center; }
+      /* Services */
       .services-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-      .service-card { height: 260px; }
-      .why-mosaic { height: 280px; gap: 8px; }
-      .counters-grid { grid-template-columns: 1fr; }
-      .counter-item { border-right: none; border-bottom: 1px solid rgba(45,106,79,0.2); padding: 56px 32px; }
-      .counter-item:last-child { border-bottom: none; }
-      .form-row { grid-template-columns: 1fr; }
-      .section-title { font-size: 2.5rem; }
+      .service-card { height: 200px; }
+      .service-name { font-size: 1.05rem; }
       .services-top { flex-direction: column; align-items: flex-start; }
-      /* Disable heavy scroll anims on mobile for perf */
+      .services-top .btn { display: none; }
+      /* Why us */
+      .why-mosaic { height: 260px; gap: 8px; }
+      .why-heading { font-size: 1.6rem; }
+      /* Counters */
+      .counters-grid { grid-template-columns: 1fr; }
+      .counter-item { border-right: none; border-bottom: 1px solid rgba(45,106,79,0.2); padding: 48px 24px; }
+      .counter-item:last-child { border-bottom: none; }
+      .counter-val { font-size: 4rem; }
+      /* Contact */
+      .form-row { grid-template-columns: 1fr; }
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      /* Section */
+      .section-title { font-size: 2rem; }
+      #services { padding: 64px 0; }
+      #why-us { padding: 64px 0; }
+      #avis { padding: 64px 0; }
+      #contact { padding: 64px 0; }
+      /* Disable heavy scroll anims on mobile */
       .service-card { opacity: 1 !important; transform: none !important; }
       .why-item { opacity: 1 !important; transform: none !important; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     }
     @media (max-width: 480px) {
-      .services-grid { grid-template-columns: 1fr; gap: 8px; }
-      .service-card { height: 220px; }
-      .btn { padding: 13px 24px; font-size: 0.9rem; }
-      .hero-title { font-size: clamp(1.4rem, 6vw, 2.5rem); white-space: normal; }
+      .container { padding: 0 16px; }
+      /* Header */
+      .logo-svg-wrap { width: 44px; height: 44px; }
+      .logo-img { width: 44px; height: 44px; }
+      .logo-name { font-size: 1rem; }
+      /* Hero */
+      .hero-title { font-size: clamp(2rem, 8vw, 3rem); white-space: nowrap; }
+      .hero-subtitle { font-size: 0.9rem; }
+      .hero-slogan { font-size: 1rem; margin-bottom: 28px; }
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; gap: 10px; }
+      .service-card { height: 200px; }
+      /* Why us — masquer les 2 petites photos */
+      .why-photo-top, .why-photo-bot { display: none; }
+      .why-mosaic { grid-template-columns: 1fr; height: 240px; }
+      .why-photo-main { grid-row: 1; }
+      .why-accent-sq { display: none; }
+      /* Buttons */
+      .btn { padding: 13px 20px; font-size: 0.88rem; }
+      /* Section */
+      .section-title { font-size: 1.75rem; }
+      #counters .counter-val { font-size: 3.5rem; }
     }
   </style>
 </head>

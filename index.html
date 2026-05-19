@@ -186,16 +186,43 @@
       font-weight: 300; letter-spacing: 0.03em; line-height: 1.6;
       opacity: 0; transform: translateY(16px); transition: all 0.6s ease;
     }
-    .hero-slogan {
-      font-family: var(--font-heading); font-size: 1.25rem; color: var(--green-light);
-      font-style: italic; margin-bottom: 44px; font-weight: 600;
+    .hero-buttons {
+      display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px;
       opacity: 0; transform: translateY(16px); transition: all 0.6s ease 0.15s;
     }
-    .hero-buttons {
-      display: flex; gap: 16px; flex-wrap: wrap;
-      opacity: 0; transform: translateY(16px); transition: all 0.6s ease 0.3s;
+    .hero-subtitle.vis, .hero-buttons.vis { opacity: 1; transform: translateY(0); }
+
+    /* Social proof widget */
+    .hero-social-proof {
+      display: inline-flex; align-items: center; gap: 14px;
+      opacity: 0; transform: translateY(16px);
+      transition: all 0.6s ease 0.3s;
     }
-    .hero-subtitle.vis, .hero-slogan.vis, .hero-buttons.vis { opacity: 1; transform: translateY(0); }
+    .hero-social-proof.vis { opacity: 1; transform: translateY(0); }
+    .sp-avatars {
+      display: flex; align-items: center;
+    }
+    .sp-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 2.5px solid rgba(255,255,255,0.15);
+      object-fit: cover; margin-left: -10px; background: #1a1a1a;
+    }
+    .sp-avatars .sp-avatar:first-child { margin-left: 0; }
+    .sp-plus {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 2.5px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-left: -10px;
+      font-weight: 300; line-height: 1;
+    }
+    .sp-info { display: flex; flex-direction: column; gap: 3px; }
+    .sp-stars { display: flex; gap: 3px; font-size: 0.85rem; }
+    .sp-label {
+      font-size: 0.78rem; color: rgba(255,255,255,0.6);
+      font-family: var(--font-body); font-weight: 400;
+    }
+    .sp-label strong { color: var(--white); font-weight: 600; }
 
     /* Hero visual area — turtle car */
     .hero-visual { position: relative; display: flex; align-items: flex-end; justify-content: center; height: 400px; }
@@ -854,7 +881,6 @@
           <span class="line word-eco" id="lineEco"></span><span class="hero-title-space"> </span><span class="line word-mec" id="lineMec"></span>
         </h1>
         <p class="hero-subtitle" id="heroSub">Réparations toutes marques depuis 2001</p>
-        <p class="hero-slogan" id="heroSlogan">"Lents à promettre. Rapides à tenir."</p>
         <div class="hero-buttons" id="heroButtons">
           <a href="tel:0961336143" class="btn btn-green">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
@@ -864,6 +890,19 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             Prendre contact
           </a>
+        </div>
+        <!-- Social proof -->
+        <div class="hero-social-proof" id="heroSocialProof">
+          <div class="sp-avatars">
+            <img src="images/P1.avif" alt="" class="sp-avatar">
+            <img src="images/P2.jpg"  alt="" class="sp-avatar">
+            <img src="images/P3.jpg"  alt="" class="sp-avatar">
+            <div class="sp-plus">+</div>
+          </div>
+          <div class="sp-info">
+            <div class="sp-stars">⭐⭐⭐⭐⭐</div>
+            <div class="sp-label"><strong>37+ avis</strong> clients satisfaits</div>
+          </div>
         </div>
       </div>
       <div class="hero-visual"></div>
@@ -1425,12 +1464,12 @@ splitChars('MÉCANIQUE', $('#lineMec'));
   charsMec.forEach((c, i) => setTimeout(() => c.classList.add('vis'), i * 55));
   await delay(charsMec.length * 55 + 150);
 
-  // Phase 5 — subtitle, slogan, buttons
+  // Phase 5 — subtitle, buttons, social proof
   $('#heroSub').classList.add('vis');
-  await delay(250);
-  $('#heroSlogan').classList.add('vis');
-  await delay(250);
+  await delay(200);
   $('#heroButtons').classList.add('vis');
+  await delay(200);
+  $('#heroSocialProof').classList.add('vis');
 })();
 
 /* ─── EASTER EGG — Logo click ─── */

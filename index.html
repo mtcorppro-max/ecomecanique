@@ -29,11 +29,11 @@
 
     /* ===== RESET ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--black); color: var(--white); font-family: var(--font-body); overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+    body { background: var(--black); color: var(--white); font-family: var(--font-body); overflow-x: hidden; max-width: 100%; }
 
     /* ===== TYPOGRAPHY ===== */
-    h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 800; line-height: 1.05; text-transform: uppercase; }
+    h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 800; line-height: 1.05; text-transform: uppercase; overflow-wrap: break-word; word-break: break-word; }
 
     .section-label {
       display: inline-flex; align-items: center; gap: 10px;
@@ -46,7 +46,7 @@
     }
 
     /* ===== UTILS ===== */
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 28px; width: 100%; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
@@ -93,7 +93,7 @@
     .header-inner { display: flex; align-items: center; justify-content: space-between; }
 
     .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; cursor: pointer; }
-    .logo-svg-wrap { width: 100px; height: 100px; flex-shrink: 0; overflow: visible; }
+    .logo-svg-wrap { width: 100px; height: 100px; flex-shrink: 0; overflow: hidden; }
     .logo-img { width: 100px; height: 100px; object-fit: contain; display: block; transition: transform 0.3s ease; }
     .logo:hover .logo-img { transform: scale(1.08); }
     .logo-text { display: flex; flex-direction: column; }
@@ -668,7 +668,7 @@
       .logo-img { width: 44px; height: 44px; }
       .logo-name { font-size: 1rem; }
       /* Hero */
-      .hero-title { font-size: clamp(2rem, 8vw, 3rem); white-space: nowrap; }
+      .hero-title { font-size: clamp(1.8rem, 7vw, 3rem); white-space: normal; }
       .hero-subtitle { font-size: 0.9rem; }
       .hero-slogan { font-size: 1rem; margin-bottom: 28px; }
       /* Services */

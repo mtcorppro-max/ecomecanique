@@ -443,11 +443,11 @@
     .why-photo-top { position: relative; z-index: 1; }
 
     /* ===== COUNTERS ===== */
-    #counters { background: var(--black); padding: 0; }
+    #counters { background: #f4f6f4; padding: 0; }
     .counters-grid { display: grid; grid-template-columns: repeat(3,1fr); }
     .counter-item {
       padding: 80px 40px; text-align: center; position: relative;
-      border-right: 1px solid rgba(45,106,79,0.2);
+      border-right: 1px solid rgba(45,106,79,0.15);
       opacity: 0; transform: translateY(20px);
       transition: opacity 0.5s ease, transform 0.5s ease;
     }
@@ -455,14 +455,14 @@
     .counter-item.vis { opacity: 1; transform: translateY(0); }
     .counter-item::before {
       content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 2px; height: 0; background: var(--yellow);
+      width: 2px; height: 0; background: var(--green);
       transition: height 0.8s cubic-bezier(0.22,1,0.36,1);
     }
     .counter-item.vis::before { height: 40px; }
-    .counter-val { font-family: var(--font-heading); font-size: 5.5rem; font-weight: 900; color: var(--yellow); line-height: 1; display: flex; align-items: baseline; justify-content: center; gap: 4px; }
+    .counter-val { font-family: var(--font-heading); font-size: 5.5rem; font-weight: 900; color: var(--black); line-height: 1; display: flex; align-items: baseline; justify-content: center; gap: 4px; }
     .counter-suf { font-size: 3rem; }
-    .counter-label { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.2em; margin-top: 12px; }
-    .counter-sub { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 4px; }
+    .counter-label { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: rgba(0,0,0,0.55); text-transform: uppercase; letter-spacing: 0.2em; margin-top: 12px; }
+    .counter-sub { font-size: 0.78rem; color: rgba(0,0,0,0.35); margin-top: 4px; }
 
     /* ===== ACTUS ===== */
     #actus { background: #0c0c0c; padding: 100px 0; }

@@ -1369,7 +1369,10 @@
         <div id="formSuccess" class="form-success" role="alert">
           ✅ Votre message a bien été envoyé ! Nous vous recontacterons très rapidement.
         </div>
-        <form class="form-contact" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="form-contact" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="REMPLACER_PAR_TA_CLE_WEB3FORMS">
+          <input type="hidden" name="subject" value="Nouveau contact — Eco Mécanique">
+          <input type="hidden" name="from_name" value="Site Eco Mécanique">
           <div class="form-row">
             <div class="form-group">
               <label for="prenom">Prénom</label>
@@ -1697,7 +1700,8 @@ $('#contactForm').addEventListener('submit', async function(e) {
       body: new FormData(this),
       headers: { Accept: 'application/json' }
     });
-    if (res.ok) {
+    const data = await res.json();
+    if (data.success) {
       this.reset();
       this.style.display = 'none';
       $('#formSuccess').classList.add('show');
